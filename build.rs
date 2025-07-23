@@ -85,13 +85,4 @@ fn main() {
     .unwrap();
     f.write_all(format!("const IANA_TZDB_VERSION: &str = \"{IANA_TZDB_VERSION}\";").as_bytes())
         .unwrap();
-    f.write_all(
-        b"
-        // pub const IANA_TZDB_VERSION = 
-        pub fn message() -> &'static str {
-            \"Hello, World!\"
-        }
-    ",
-    )
-    .unwrap();
 }
