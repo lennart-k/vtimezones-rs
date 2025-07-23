@@ -1,5 +1,5 @@
 [package]
-name = "vzic-rs"
+name = "vtimezones-rs"
 version = "0.1.0"
 edition = "2024"
 

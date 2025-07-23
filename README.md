@@ -1,4 +1,4 @@
-# vzic-rs
+# vtimezones-rs
 
 Provides timezones from the IANA TZDB as VTIMEZONES for the iCalendar format.
 
