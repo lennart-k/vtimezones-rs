@@ -7,7 +7,7 @@ use std::{
     process::Command,
 };
 
-const IANA_TZDB_VERSION: &str = "2025a";
+const IANA_TZDB_VERSION: &str = "2025b";
 
 fn main() {
     let out_dir = format!("{}/vtimezones", env::var("OUT_DIR").unwrap());
