@@ -18,7 +18,7 @@ fn main() {
 
     assert!(
         Command::new("make")
-            .args(["-C", "vzic"])
+            .args(["-C", "vzic", "vzic"])
             .env("OLSON_DIR", "")
             .env(
                 "PRODUCT_ID",
