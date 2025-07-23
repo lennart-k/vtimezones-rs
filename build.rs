@@ -69,7 +69,7 @@ fn main() {
     let mut f = File::create(&dest_path).unwrap();
     f.write_all(
         format!(
-            "static VTIMEZONES: phf::Map<&'static str, &'static str> = {};\n",
+            "pub static VTIMEZONES: phf::Map<&'static str, &'static str> = {};\n",
             tzmap.build()
         )
         .as_bytes(),
