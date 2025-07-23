@@ -1,7 +1,10 @@
 [package]
 name = "vtimezones-rs"
+homepage = "https://github.com/lennart-k/vtimezones-rs"
+repository = "https://github.com/lennart-k/vtimezones-rs"
 version = "0.1.0"
 edition = "2024"
+license = "GPL-3.0-or-later"
 
 [dependencies]
 phf = { version = "0.12", default-features = false }
