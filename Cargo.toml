@@ -1,5 +1,6 @@
 [package]
 name = "vtimezones-rs"
+description = "Provides VTIMEZONE objects for tzdb timezones"
 homepage = "https://github.com/lennart-k/vtimezones-rs"
 repository = "https://github.com/lennart-k/vtimezones-rs"
 version = "0.1.0"
