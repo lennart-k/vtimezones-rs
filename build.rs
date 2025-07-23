@@ -17,14 +17,6 @@ fn main() {
     println!("cargo::rerun-if-changed=vzic");
 
     assert!(
-        Command::new("git")
-            .args(["-C", "tzdata", "checkout", IANA_TZDB_VERSION])
-            .status()
-            .unwrap()
-            .success()
-    );
-
-    assert!(
         Command::new("make")
             .args(["-C", "vzic"])
             .env("OLSON_DIR", "")
