@@ -41,6 +41,14 @@ fn main() {
             .success()
     );
 
+    assert!(
+        Command::new("make")
+            .args(["-C", "vzic", "clean"])
+            .status()
+            .unwrap()
+            .success()
+    );
+
     let zones_tab = read_to_string(format!("{out_dir}/zones.tab"));
     let zonenames: Vec<&str> = zones_tab
         .as_ref()
