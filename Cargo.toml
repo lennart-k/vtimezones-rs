@@ -3,7 +3,7 @@ name = "vtimezones-rs"
 description = "Provides VTIMEZONE objects for tzdb timezones"
 homepage = "https://github.com/lennart-k/vtimezones-rs"
 repository = "https://github.com/lennart-k/vtimezones-rs"
-version = "0.1.1"
+version = "0.1.2"
 edition = "2024"
 license = "GPL-3.0-or-later"
 
