@@ -75,6 +75,6 @@ fn main() {
         .as_bytes(),
     )
     .unwrap();
-    f.write_all(format!("const IANA_TZDB_VERSION: &str = \"{IANA_TZDB_VERSION}\";").as_bytes())
+    f.write_all(format!("pub const IANA_TZDB_VERSION: &str = \"{IANA_TZDB_VERSION}\";").as_bytes())
         .unwrap();
 }
