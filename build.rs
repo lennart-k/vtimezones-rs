@@ -4,52 +4,16 @@ use std::{
     io::Write,
     iter::zip,
     path::Path,
-    process::Command,
 };
 
-const IANA_TZDB_VERSION: &str = "2025b";
-
 fn main() {
-    let out_dir = format!("{}/vtimezones", env::var("OUT_DIR").unwrap());
+    let out_dir = env::var("OUT_DIR").unwrap();
+    let crate_dir = env!("CARGO_MANIFEST_DIR");
 
     println!("cargo::rerun-if-changed=build.rs");
-    println!("cargo::rerun-if-changed=tzdata");
-    println!("cargo::rerun-if-changed=vzic");
+    println!("cargo::rerun-if-changed=tzdata_ics");
 
-    assert!(
-        Command::new("make")
-            .args(["-C", "vzic", "vzic"])
-            .env("OLSON_DIR", "")
-            .env(
-                "PRODUCT_ID",
-                "-//github.com/lennart-k/vzic-rs//RustiCal Calendar server//EN",
-            )
-            .env("TZID_PREFIX", "")
-            .env("CREATE_SYMLINK", "1")
-            .status()
-            .unwrap()
-            .success()
-    );
-
-    assert!(
-        Command::new("./vzic/vzic")
-            .arg("--dump")
-            .args(["--olson-dir", "tzdata"])
-            .args(["--output-dir", &out_dir])
-            .status()
-            .unwrap()
-            .success()
-    );
-
-    assert!(
-        Command::new("make")
-            .args(["-C", "vzic", "clean"])
-            .status()
-            .unwrap()
-            .success()
-    );
-
-    let zones_tab = read_to_string(format!("{out_dir}/zones.tab"));
+    let zones_tab = read_to_string("tzdata_ics/zones.tab");
     let zonenames: Vec<&str> = zones_tab
         .as_ref()
         .unwrap()
@@ -65,7 +29,7 @@ fn main() {
 
     let zonepaths: Vec<_> = zonenames
         .iter()
-        .map(|name| format!("{out_dir}/{name}.ics"))
+        .map(|name| format!("{crate_dir}/tzdata_ics/{name}.ics"))
         .collect();
 
     let mut tzmap = phf_codegen::Map::new();
@@ -83,6 +47,4 @@ fn main() {
         .as_bytes(),
     )
     .unwrap();
-    f.write_all(format!("pub const IANA_TZDB_VERSION: &str = \"{IANA_TZDB_VERSION}\";").as_bytes())
-        .unwrap();
 }
