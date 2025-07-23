@@ -7,12 +7,22 @@ use std::{
     process::Command,
 };
 
+const IANA_TZDB_VERSION: &str = "2025a";
+
 fn main() {
     let out_dir = format!("{}/vtimezones", env::var("OUT_DIR").unwrap());
 
     println!("cargo::rerun-if-changed=build.rs");
     println!("cargo::rerun-if-changed=tzdata");
-    println!("cargo::rerun-if-env-changed=OLSON_DIR");
+    println!("cargo::rerun-if-changed=vzic");
+
+    assert!(
+        Command::new("git")
+            .args(["-C", "tzdata", "checkout", IANA_TZDB_VERSION])
+            .status()
+            .unwrap()
+            .success()
+    );
 
     assert!(
         Command::new("make")
@@ -73,6 +83,8 @@ fn main() {
         .as_bytes(),
     )
     .unwrap();
+    f.write_all(format!("const IANA_TZDB_VERSION: &str = \"{IANA_TZDB_VERSION}\";").as_bytes())
+        .unwrap();
     f.write_all(
         b"
         // pub const IANA_TZDB_VERSION = 
