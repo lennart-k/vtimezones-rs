@@ -1,0 +1,6 @@
+[submodule "vzic"]
+	path = vzic
+	url = https://github.com/libical/vzic
+[submodule "tzdata"]
+	path = tzdata
+	url = https://github.com/eggert/tz
