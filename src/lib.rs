@@ -10,4 +10,9 @@ mod tests {
     fn test_basic() {
         assert!(VTIMEZONES.get("Europe/Berlin").is_some());
     }
+
+    #[test]
+    fn test_symlink() {
+        assert!(VTIMEZONES.get("Africa/Bamako").is_some());
+    }
 }

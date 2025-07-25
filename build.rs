@@ -1,10 +1,4 @@
-use std::{
-    env,
-    fs::{File, read_to_string},
-    io::Write,
-    iter::zip,
-    path::Path,
-};
+use std::{env, fs::File, io::Write, path::Path};
 
 fn main() {
     let out_dir = env::var("OUT_DIR").unwrap();
@@ -13,28 +7,19 @@ fn main() {
     println!("cargo::rerun-if-changed=build.rs");
     println!("cargo::rerun-if-changed=tzdata_ics");
 
-    let zones_tab = read_to_string("tzdata_ics/zones.tab");
-    let zonenames: Vec<&str> = zones_tab
-        .as_ref()
-        .unwrap()
-        .lines()
-        .map(|line| {
-            if line.contains(' ') {
-                line.rsplit_once(' ').unwrap().1
-            } else {
-                line
-            }
-        })
-        .collect();
-
-    let zonepaths: Vec<_> = zonenames
-        .iter()
-        .map(|name| format!("{crate_dir}/tzdata_ics/{name}.ics"))
-        .collect();
-
     let mut tzmap = phf_codegen::Map::new();
-    for (zonename, zonepath) in zip(zonenames, zonepaths) {
-        tzmap.entry(zonename, format!("include_str!(\"{zonepath}\")"));
+    for entry in glob::glob("tzdata_ics/**/*.ics").unwrap() {
+        let entry = entry.unwrap();
+        let zonename = entry
+            .strip_prefix("tzdata_ics/")
+            .unwrap()
+            .to_str()
+            .unwrap()
+            .strip_suffix(".ics")
+            .unwrap();
+        let abspath = Path::new(crate_dir).join(entry.as_path());
+        let zonepath = abspath.to_str().unwrap();
+        tzmap.entry(zonename.to_owned(), format!("include_str!(\"{zonepath}\")"));
     }
 
     let dest_path = Path::new(&out_dir).join("timezones.rs");
