@@ -1,6 +1,6 @@
 include!(concat!(env!("OUT_DIR"), "/timezones.rs"));
 
-pub const IANA_TZDB_VERSION: &str = "2025c";
+pub const IANA_TZDB_VERSION: &str = "2025b";
 
 #[cfg(test)]
 mod tests {

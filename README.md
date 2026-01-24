@@ -8,7 +8,7 @@ Exports
 
 ```rs
 pub static VTIMEZONES: phf::Map<&'static str, &'static str>;
-pub const IANA_TZDB_VERSION: &str = "2025c";
+pub const IANA_TZDB_VERSION: &str = "2025b";
 ```
 
 This project is not affiliated with any of its dependencies.
