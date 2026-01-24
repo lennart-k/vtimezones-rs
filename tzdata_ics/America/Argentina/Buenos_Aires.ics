@@ -2,9 +2,10 @@ BEGIN:VCALENDAR
 PRODID:-//github.com/lennart-k/vzic-rs//RustiCal Calendar server//EN
 VERSION:2.0
 BEGIN:VTIMEZONE
-TZID:America/Argentina/Buenos_Aires
-LAST-MODIFIED:20250723T190331Z
-X-LIC-LOCATION:America/Argentina/Buenos_Aires
+TZID:America/Buenos_Aires
+TZID-ALIAS-OF:America/Argentina/Buenos_Aires
+LAST-MODIFIED:20260124T165824Z
+X-LIC-LOCATION:America/Buenos_Aires
 X-PROLEPTIC-TZNAME:LMT
 BEGIN:STANDARD
 TZNAME:CMT
