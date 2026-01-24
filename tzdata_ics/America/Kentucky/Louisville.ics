@@ -2,10 +2,9 @@ BEGIN:VCALENDAR
 PRODID:-//github.com/lennart-k/vzic-rs//RustiCal Calendar server//EN
 VERSION:2.0
 BEGIN:VTIMEZONE
-TZID:America/Louisville
-TZID-ALIAS-OF:America/Kentucky/Louisville
-LAST-MODIFIED:20260124T165824Z
-X-LIC-LOCATION:America/Louisville
+TZID:America/Kentucky/Louisville
+LAST-MODIFIED:20260124T170238Z
+X-LIC-LOCATION:America/Kentucky/Louisville
 X-PROLEPTIC-TZNAME:LMT
 BEGIN:STANDARD
 TZNAME:CST

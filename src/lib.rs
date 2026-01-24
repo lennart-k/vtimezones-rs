@@ -1,6 +1,6 @@
 include!(concat!(env!("OUT_DIR"), "/timezones.rs"));
 
-pub const IANA_TZDB_VERSION: &str = "2025b";
+pub const IANA_TZDB_VERSION: &str = "2025c";
 
 #[cfg(test)]
 mod tests {
@@ -14,5 +14,15 @@ mod tests {
     #[test]
     fn test_symlink() {
         assert!(VTIMEZONES.get("Africa/Bamako").is_some());
+    }
+
+    #[test]
+    fn test_symlinks_disabled() {
+        assert!(
+            VTIMEZONES
+                .get("Europe/Amsterdam")
+                .unwrap()
+                .contains("Europe/Amsterdam")
+        );
     }
 }

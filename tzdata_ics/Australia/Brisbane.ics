@@ -2,10 +2,9 @@ BEGIN:VCALENDAR
 PRODID:-//github.com/lennart-k/vzic-rs//RustiCal Calendar server//EN
 VERSION:2.0
 BEGIN:VTIMEZONE
-TZID:Australia/Queensland
-TZID-ALIAS-OF:Australia/Brisbane
-LAST-MODIFIED:20260124T165824Z
-X-LIC-LOCATION:Australia/Queensland
+TZID:Australia/Brisbane
+LAST-MODIFIED:20260124T170238Z
+X-LIC-LOCATION:Australia/Brisbane
 X-PROLEPTIC-TZNAME:LMT
 BEGIN:STANDARD
 TZNAME:AEST

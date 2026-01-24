@@ -2,10 +2,9 @@ BEGIN:VCALENDAR
 PRODID:-//github.com/lennart-k/vzic-rs//RustiCal Calendar server//EN
 VERSION:2.0
 BEGIN:VTIMEZONE
-TZID:Antarctica/DumontDUrville
-TZID-ALIAS-OF:Pacific/Port_Moresby
-LAST-MODIFIED:20260124T165824Z
-X-LIC-LOCATION:Antarctica/DumontDUrville
+TZID:Pacific/Port_Moresby
+LAST-MODIFIED:20260124T170238Z
+X-LIC-LOCATION:Pacific/Port_Moresby
 X-PROLEPTIC-TZNAME:LMT
 BEGIN:STANDARD
 TZNAME:PMMT
