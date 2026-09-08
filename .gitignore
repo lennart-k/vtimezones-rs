@@ -1,3 +1,6 @@
 /target
 libical/vzic/vzic
 libical/vzic/*.o
+
+.direnv
+.envrc.local
